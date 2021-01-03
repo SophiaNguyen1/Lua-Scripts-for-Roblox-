@@ -1,0 +1,38 @@
+--Script for opening door for VIP users 
+--variable declaration of door 
+local Door = script.Parent
+-- list of people allowed to go through the door. 
+permission = { "creepycalico, CalicoReborn" } 
+
+--function to check if person is in list 
+function check(name) 
+	--for loop through the permission list 
+	for i = 1,#permission do 
+		--if name is on list return true 
+		if (name == permission[i]))
+		 then return true 
+		end 
+	end 
+	return false --else return false
+end 
+
+--function to allow person to go through door
+function onTouched(hit) 
+	--identify human
+	local human = hit.Parent:findFirstChild("Humanoid") 
+	if (human ~= nil ) then
+		--if human is in list 
+		if (check(human.Parent.Name)) then 
+			--door opens
+			Door.Transparency = 0.5 
+			Door.CanCollide = false 
+			wait(5) -- 5 second pause before door closes
+			--door closes
+			Door.CanCollide = true 
+			Door.Transparency = 0 
+		end 
+	end 
+end --else end 
+
+--call upon method 
+script.Parent.Touched:connect(onTouched)
