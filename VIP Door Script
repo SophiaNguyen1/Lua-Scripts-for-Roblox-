@@ -1,4 +1,5 @@
 --Script for opening door for VIP users 
+--@author Sophia Nguyen
 --variable declaration of door 
 local Door = script.Parent
 -- list of people allowed to go through the door. 
